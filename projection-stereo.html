@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Example full VR site</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="viewmode" content="projection=stereo">
+		<meta name="theme-color" content="#efefef">
+		
+		<style>
+			html, body {
+				background-color: #000;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+				font-family: sans-serif;
+			}
+			#left {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 50%;
+				height: 100%;
+				background: #333;
+				display: flex;
+				align-items: center;
+  			justify-content: center;
+  			box-sizing: border-box;
+  			border: 100px solid green;
+			}
+			#right {
+				position: absolute;
+				top: 0px;
+				left: 50%;
+				width: 50%;
+				height: 100%;
+				background: #333;
+				border: 100px solid orange;
+				box-sizing: border-box;
+			}
+			#description {
+				width: 400px;
+				max-width: 50%;
+			}
+			#bottom-right {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+			#top-left {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			.stripes {
+				background: repeating-linear-gradient(
+				  45deg,
+				  #606dbc,
+				  #606dbc 10px,
+				  #465298 10px,
+				  #465298 20px
+				);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="left">
+			<div id="description">
+				<p>This tests for correct left/right fitment of full VR sites.</p>
+
+				<p>Page also has projection=stereo meta tag set.</p>
+			</div>
+		</div>
+		<div id="right"></div>
+		<div id="top-left" class="stripes">Top left</div>
+		<div id="bottom-right" class="stripes">Bottom Right</div>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS VR Experiments</title>
+  <meta charset="utf-8">
+  <meta name="viewmode" content="projection=stereo">
+  <style>
+  .threed {
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  #testbox {
+    width: 300px;
+    height: 300px;
+    background: purple;
+    transform: translate3d(0, 0, -1300px);
+  }
+
+  .toggle {
+    opacity: 0.5;
+  }
+
+  #fs {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  #info {
+    position: absolute;
+    top: 50px;
+  }
+  </style>
+  <script>
+  var vrDevices = {};
+  
+  function start() {
+    var fsButton = document.querySelector('#fs');
+    var container = document.querySelector('#container');
+    
+    fsButton.addEventListener('click', function() {
+      container.mozRequestFullScreen({ vrDisplay: vrDevices.headset }) ;
+    })
+  }
+
+  navigator.getVRDevices().then(function(devices) {
+    vrDevices.headset = devices[0];
+    vrDevices.position = devices[1];
+
+    start();
+  });
+
+  function onkey( event ) {
+    if ( event.keyCode == '32' ) { // spacebar
+      document.getElementById('testbox').classList.toggle('toggle');
+    }
+    event.stopPropagation();
+  };
+
+  window.addEventListener("keydown", onkey, true);
+
+  </script>
+
+</head>
+<body>
+	<div id="container">
+    <div id="testbox" class="threed"></div>
+  </div>
+
+  <button id="fs">Fullscreen VR</button>
+
+  <div id="info">Spacebar toggles opacity on #testbox element.</div>
+</body>
+</html>

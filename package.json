@@ -1,0 +1,22 @@
+{
+  "name": "webvr-tests",
+  "version": "0.0.1",
+  "description": "Various tests for WebVR",
+  "scripts": {
+    "start": "http-server ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mozvr/webvr-tests"
+  },
+  "license": "MPL",
+  "bugs": {
+    "url": "https://github.com/mozvr/webvr-tests/issues"
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "devDependencies": {
+    "http-server": "^0.7.4"
+  }
+}

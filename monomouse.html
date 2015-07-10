@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Example 2d site</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+      html, body {
+        background-color: darkgreen;
+        color: #fff;
+        margin: 0px;
+        overflow: hidden;
+        font-size: 100px;
+      }
+
+      #cursor {
+        position: absolute;
+        background: purple;
+        width: 100px;
+        height: 100px;
+        transform: translate(-50%, -50%);
+      }
+
+      a {
+        color: white;
+      }
+      a:hover {
+        color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="position">position</div>
+    <div id="cursor"></div>
+    <a href="http://www.mozvr.com">I am a giant link</a>
+    <div id="state">state</div>
+  </body>
+
+  <script>
+  var position = document.getElementById('position');
+  var cursor = document.getElementById('cursor');
+  var state = document.getElementById('state');
+  document.addEventListener('mousemove', function(e) {
+    console.log(e);
+    var left = (e.clientX < 0 || e.clientX > window.innerWidth) ? 0 : e.clientX;
+    var top = (e.clientY < 0 || e.clientY > window.innerHeight) ? 0 : e.clientY;
+
+    cursor.style.top = top + 'px';
+    cursor.style.left = left + 'px';
+    position.innerHTML = left + '<br/>' + top;
+
+  });
+  document.addEventListener('click', function(e) {
+    console.log(e);
+  });
+  document.addEventListener('mousedown', function(e) {
+    state.innerHTML = 'mousedown';
+    cursor.style.background = 'yellow';
+  });
+
+  document.addEventListener('mouseup', function(e) {
+    state.innerHTML = 'mouseup';
+    cursor.style.background = '';
+  });
+  </script>
+</html>
